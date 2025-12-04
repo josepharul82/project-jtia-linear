@@ -85,7 +85,36 @@ public class SampleTest {
         nextStepButton.click();
     }
 
-    private void fillHomeDetail() {
+    private void fillHomeDetail() throws InterruptedException {
+        // Localisation
+        waitForVisibility(webDriver, By.name("streetNumber"), 30).sendKeys("12");
+        waitForVisibility(webDriver, By.name("streetName"), 30).sendKeys("Rue de la Paix");
+        waitForVisibility(webDriver, By.name("city"), 30).sendKeys("Paris");
+        waitForVisibility(webDriver, By.name("postcode"), 30).sendKeys("75001");
+        waitForVisibility(webDriver, By.name("region"), 30).sendKeys("Île-de-France");
+        WebElement countrySelect = waitForVisibility(webDriver, By.name("country"), 30);
+        countrySelect.sendKeys("France");
+
+        // Type de logement : Appartement
+        WebElement apartmentRadio = waitForVisibility(webDriver, By.id("home-type-appt"), 30);
+        apartmentRadio.click();
+
+        // Détails appartement
+        WebElement totalFloorsSelect = waitForVisibility(webDriver, By.name("total-floors"), 30);
+        totalFloorsSelect.sendKeys("Between 4 to 7 floors");
+        waitForVisibility(webDriver, By.name("my-floors"), 30).sendKeys("5");
+        WebElement elevatorYes = waitForVisibility(webDriver, By.id("elevator-yes"), 30);
+        elevatorYes.click();
+
+        // Champs communs
+        WebElement roomsSelect = waitForVisibility(webDriver, By.name("rooms"), 30);
+        roomsSelect.sendKeys("3 Rooms");
+        waitForVisibility(webDriver, By.name("surface"), 30).sendKeys("80");
+
+        WebElement nextStepButton = waitForElementClickable(webDriver, By.xpath("//button[contains(text(),'Next Step')]"), 30);
+        waitUntilElementInView(webDriver, nextStepButton, 30);
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].focus();", nextStepButton);
+        nextStepButton.click();
     }
 
 
