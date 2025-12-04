@@ -68,6 +68,21 @@ public class SampleTest {
     }
 
     private void testResearchPage() {
+        // Remplir le champ prospectId
+        WebElement prospectIdInput = waitForVisibility(webDriver, By.name("prospectId"), 30);
+        prospectIdInput.sendKeys("12345");
+
+        // Remplir le champ prospectName
+        WebElement prospectNameInput = waitForVisibility(webDriver, By.name("prospectName"), 30);
+        prospectNameInput.sendKeys("Dupont");
+
+        // Cliquer sur le bouton Search
+        WebElement searchButton = waitForVisibility(webDriver, By.xpath("//button[contains(text(),'Search')]"), 30);
+        searchButton.click();
+
+        // Cliquer sur le bouton Next Step
+        WebElement nextStepButton = waitForVisibility(webDriver, By.xpath("//button[contains(text(),'Next Step')]"), 30);
+        nextStepButton.click();
     }
 
     private void fillHomeDetail() {
