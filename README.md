@@ -22,5 +22,7 @@ git branch -M main
 
 git push -u origin main 
 
+# application to test
+https://axafrance.github.io/webengine-dotnet/demo/home-insurance/
 
 
